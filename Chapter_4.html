@@ -24,4 +24,34 @@ console.log(range(1, 10));
 console.log(range(5, 2, -1));
 console.log(sum(range(1, 10)));
 
+
+/*
+Write a fucntion that returns a reversed array. Then, write a function that
+reverses an array in place.
+*/
+function reverseArray(array){
+  let reversed = [];
+  for (let item of array){
+    reversed.unshift(item);
+  }
+  return reversed;
+}
+function reverseArrayInPlace(array){
+  let temp = null;
+  let midpoint = Math.floor(array.length/2);
+  let head = 0;
+  let tail = array.length-1;
+  while (head < midpoint){
+    temp = array[head];
+    array[head] = array[tail];
+    array[tail] = temp;
+    head++;
+    tail--;
+  }
+}
+console.log(reverseArray(["A", "B", "C"]));
+let arrayValue = [1, 2, 3, 4, 5];
+reverseArrayInPlace(arrayValue);
+console.log(arrayValue);
+
 </script>
