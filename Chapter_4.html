@@ -1,0 +1,27 @@
+<script>
+
+/*
+Write a range function that takes a start and end as input and returns as array
+containing numbers from and including start to end with an optional third
+arguement indicating the step to count in. Also, write a function that sums the
+numbers in an array.
+*/
+function range(start, end, step=1){
+  let array = []
+  for (let i = start; i < end+1; i += step){
+    array.push(i);
+  }
+  return array;
+}
+function sum(array){
+  let total = 0;
+  for (let number of array){
+    total += number;
+  }
+  return total;
+}
+console.log(range(1, 10));
+console.log(range(5, 2, -1));
+console.log(sum(range(1, 10)));
+
+</script>
