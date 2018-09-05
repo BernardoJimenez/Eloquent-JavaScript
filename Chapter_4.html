@@ -54,4 +54,65 @@ let arrayValue = [1, 2, 3, 4, 5];
 reverseArrayInPlace(arrayValue);
 console.log(arrayValue);
 
+
+/*
+Create a function that creates a list like the example given based on an array
+as input. Create a function that does the opposite. Create a function 'prepend'
+that takes an element and a list, and returns a new list with that element as
+the first value and teh old list as rest. Create an 'nth' function that returns
+the nth value in a list.
+*/
+let exampleList = {
+  value: 1,
+  rest: {
+    value: 2,
+    rest: {
+      value: 3,
+      rest: null
+    }
+  }
+};
+function arrayToList(array, index = 0){
+  if (index >= array.length){
+    return null;
+  } else {
+  	return {value : array[index], rest : arrayToList(array, index+1)};
+  }
+}
+function listToArray(list, result = []){
+  result.push(list['value'])
+  if (list['rest'] == null){
+    return result;
+  } else {
+    return listToArray(list['rest'], result);
+  }
+}
+function prepend(element, list){
+  return {value : element, rest : list};
+}
+function nth(list, position){
+  if (position === 0){
+    return list['value'];
+  } else {
+    return nth(list['rest'], position-1);
+  }
+}
+console.log(arrayToList([10, 20]));
+console.log(listToArray(arrayToList([10, 20, 30])));
+console.log(prepend(10, prepend(20, null)));
+console.log(nth(arrayToList([10, 20, 30]), 1));
+
+
+/*
+Create a function that compares two objects to see if they're equal.
+*/
+function deepEqual(obj1, obj2)
+{
+    return JSON.stringify(obj1) === JSON.stringify(obj2);
+}
+let obj = {here: {is: "an"}, object: 2};
+console.log(deepEqual(obj, obj));
+console.log(deepEqual(obj, {here: 1, object: 2}));
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+
 </script>
